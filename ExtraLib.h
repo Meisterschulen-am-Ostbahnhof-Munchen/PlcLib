@@ -37,9 +37,9 @@ class CYCLE_4_TAP
 public:
 	//VAR_INPUT
 	int32_t T0 = 500;
-	int32_t T1 = 1000;
-	int32_t T2 = 1500;
-	int32_t T3 = 2000;
+	int32_t T1 = 500;
+	int32_t T2 = 500;
+	int32_t T3 = 500;
 	//VAR_OUTPUT
 	int32_t STATE = 0;
 	bool Q0 = false;		/* divider output */
