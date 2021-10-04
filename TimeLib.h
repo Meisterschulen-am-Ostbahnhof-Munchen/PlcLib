@@ -11,6 +11,7 @@
 
 
 int32_t T_PLC_MS(void);
+int32_t T_PLC_US(void);
 
 
 

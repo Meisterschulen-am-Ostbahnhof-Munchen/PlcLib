@@ -9,6 +9,43 @@
 #define MAIN_BASICLIB_H_
 
 
+
+
+/**
+ * \brief
+
+
+	FT_PT1 is an low pass filter with a programmable time T and faktor K.
+
+ *
+
+ *
+ */
+
+class FT_PT1
+{
+public:
+	//VAR_INPUT
+	int32_t T; 			/* TIME */
+	float K 		= 1.0;
+	//VAR_OUTPUT
+	float out;
+	//call
+	float operator()(float in);/* */
+private:
+	int32_t last	= 0;
+	int32_t tx		= 0;
+	bool init		= false;
+};
+
+
+
+
+
+
+
+
+
 /**
  * \brief
 
