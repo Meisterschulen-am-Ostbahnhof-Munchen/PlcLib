@@ -51,15 +51,16 @@ void THREE_POSITION_SWITCH::operator ()(void) {
 
 }
 
+void THREE_POSITION_VALVE::operator ()(void) {
+
+	switch (State){
+	case Off:                             Q1 = false; Q2 = false; break;
+	case Momentary_forward_up_right:      Q1 = true;  Q2 = false; break;
+	case held_forward_up_right:           Q1 = true;  Q2 = false; break;
+	case Momentary_backward_down_left:    Q1 = false; Q2 = true;  break;
+	case held_backward_down_left:         Q1 = false; Q2 = true;  break;
+	default:                              Q1 = false; Q2 = false; break;
+	}
 
 
-
-
-
-
-
-
-
-
-
-
+}

@@ -80,7 +80,17 @@ class THREE_POSITION_SWITCH
 
 
 
-
+class THREE_POSITION_VALVE
+{
+	public:
+	//VAR_INPUT
+	THREE_POSITION_SWITCH_v1 State = Off;		/* Input 1 */
+	//VAR_OUTPUT
+	bool Q1 = false;		/* output 1 */
+	bool Q2 = false;		/* output 2 */
+	//call
+	void operator()(void);  /*  */
+};
 
 
 
