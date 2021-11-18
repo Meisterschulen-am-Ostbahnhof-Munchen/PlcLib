@@ -38,15 +38,28 @@ void INTERLOCK::operator ()(void) {
 
 void THREE_POSITION_SWITCH::operator ()(void) {
 
-                                         if(!I1 && !I2){        State = Off;        return;      } //Off is Off. nothing else.
-    switch (State) {
-    case Off:                            if( I1 && !I2){  State = Momentary_forward_up_right;    }			//if we was off, we go mom.
-                                         if(!I1 &&  I2){  State = Momentary_backward_down_left;  } break;
-    case Momentary_forward_up_right:     if( I1       ){  State = held_forward_up_right;         } break;  //held
-    case Momentary_backward_down_left:   if(        I2){  State = held_backward_down_left;       } break;  //held
-    default:
-    case held_forward_up_right:
-    case held_backward_down_left:        /*NOOP*/                                                  break; //nothing to do.
+    /* any case */                       if(!I1 && !I2) {        State = Off;        return;      }         //Off is Off. nothing else.
+    switch (State) { /* in case */                                                                          //
+    case Off:                            if( I1 && !I2) {  State = Momentary_forward_up_right;    }         //if we was off, we go mom.
+                                         if(!I1 &&  I2) {  State = Momentary_backward_down_left;  } break;  //if we was off, we go mom.
+    case Momentary_forward_up_right:     if( I1       ) {  State = held_forward_up_right;         } break;  // held
+    case Momentary_backward_down_left:   if(        I2) {  State = held_backward_down_left;       } break;  // held
+    case held_forward_up_right:          if(!I1       ) {  State = Off;                           } break;  // only exit if Button is no more pressed.
+    case held_backward_down_left:        if(       !I2) {  State = Off;                           } break;  // only exit if Button is no more pressed.
+    default:                                            {  State = Off;                           } break;  // ERROR
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
