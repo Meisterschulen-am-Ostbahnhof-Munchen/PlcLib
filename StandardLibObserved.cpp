@@ -11,6 +11,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include "TimeLib.h"
+#include "TimerSettings.h"
 #include "StandardLibObserved.h"
 
 
@@ -19,6 +20,21 @@
 #include "esp_log.h"
 
 static const char *TAG = "StandardLibObserved";
+
+TOF_R_TRIG_O::TOF_R_TRIG_O(TimerSettings* s) {
+    _subject = s;
+    _subject->Attach(this);
+}
+
+TOF_R_TRIG_O::~TOF_R_TRIG_O() {
+    _subject->Detach(this);
+}
+
+void TOF_R_TRIG_O::Update(Subject* theChangedSubject) {
+    if (theChangedSubject == _subject) {
+    	PT = _subject->getPT();
+    }
+}
 
 bool TOF_R_TRIG_O::operator ()(bool IN)
 {

@@ -9,6 +9,12 @@
 #define COMPONENTS_PLCLIB_STANDARDLIBOBSERVED_H_
 
 
+#include "Observer.h"
+
+class TimerSettings;
+class Subject;
+
+
 /**
  * \brief
 	Timer of delay.
@@ -25,11 +31,15 @@ TOF_1 is the same function as TOF from the standard LIB except the asynchronous 
  * \return	Q is FALSE, PT seconds after IN had a falling edge
  *
  */
-class TOF_R_TRIG_O
+class TOF_R_TRIG_O : public Observer
 {
 public:
+	TOF_R_TRIG_O(TimerSettings*);
+    virtual ~TOF_R_TRIG_O();
+
+    virtual void Update(Subject*);
+        // overrides Observer operation
 	//VAR_INPUT
-	int32_t PT = 0;
 	bool RST = false;
 	//VAR_OUTPUT
 	bool Q = false;					/* Q is FALSE, PT milliseconds after IN had a falling edge */
@@ -38,7 +48,9 @@ public:
 	bool operator()(bool IN);/* Q is FALSE, PT milliseconds after IN had a falling edge */
 private:
 	bool M = false;			/* internal variable */
+	int32_t PT = 0;			/* internal variable */
 	int32_t StartTime = 0;	/* internal variable */
+	TimerSettings* _subject;
 };
 
 
