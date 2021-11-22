@@ -6,11 +6,11 @@ TimerSettings::TimerSettings() {
 }
 
 
-int32_t TimerSettings::getPT() const {
+int32_t TimerSettings::getPT(const char* key) const {
 	return (_PT);
 }
 
-void TimerSettings::setPT(int32_t PT) {
+void TimerSettings::setPT(const char* key, int32_t PT) {
 	this->_PT = PT;
     Notify();
 }

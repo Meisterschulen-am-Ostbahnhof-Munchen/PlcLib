@@ -34,7 +34,7 @@ TOF_1 is the same function as TOF from the standard LIB except the asynchronous 
 class TOF_R_TRIG_O : public Observer
 {
 public:
-	TOF_R_TRIG_O(TimerSettings*);
+	TOF_R_TRIG_O(TimerSettings*, const char* key);
     virtual ~TOF_R_TRIG_O();
 
     virtual void Update(Subject*);
@@ -51,6 +51,7 @@ private:
 	int32_t PT = 0;			/* internal variable */
 	int32_t StartTime = 0;	/* internal variable */
 	TimerSettings* _subject;
+	const char* _key;
 };
 
 

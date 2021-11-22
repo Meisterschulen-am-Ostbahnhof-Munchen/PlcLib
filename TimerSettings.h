@@ -10,8 +10,8 @@ public:
 
 	TimerSettings();
 
-	int32_t getPT() const;
-	void setPT(int32_t PT);
+	int32_t getPT(const char* key) const;
+	void setPT(const char* key, int32_t PT);
 
 
 private:
