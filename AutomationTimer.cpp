@@ -32,18 +32,29 @@ void THREE_POSITION_TOF::operator ()(void)
 	// raising Edge
 	if (M == THREE_POSITION_SWITCH_v1::Off)
 	{
-		if(IN == THREE_POSITION_SWITCH_v1::Momentary_forward_up_right)
+		if (OUT == THREE_POSITION_SWITCH_v1::Off)
 		{
-			ESP_LOGD(TAG, "TOF_1: raising Edge detected Momentary_forward_up_right");
-			//Start the Timer
-			StartTime = tx;
-		}
+			if(IN == THREE_POSITION_SWITCH_v1::Momentary_forward_up_right)
+			{
+				ESP_LOGD(TAG, "TOF_1: raising Edge detected Momentary_forward_up_right");
+				//Start the Timer
+				StartTime = tx;
+			}
 
-		if(IN == THREE_POSITION_SWITCH_v1::Momentary_backward_down_left)
+			if(IN == THREE_POSITION_SWITCH_v1::Momentary_backward_down_left)
+			{
+				ESP_LOGD(TAG, "TOF_1: raising Edge detected Momentary_backward_down_left");
+				//Start the Timer
+				StartTime = tx;
+			}
+		}
+		else //OUT = on, stop Timer.
 		{
-			ESP_LOGD(TAG, "TOF_1: raising Edge detected Momentary_backward_down_left");
-			//Start the Timer
-			StartTime = tx;
+			if (IN != THREE_POSITION_SWITCH_v1::Off)
+			{
+				OUT = THREE_POSITION_SWITCH_v1::Off;
+				IN  = THREE_POSITION_SWITCH_v1::Off;
+			}
 		}
 	}
 
