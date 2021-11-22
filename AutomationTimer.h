@@ -26,8 +26,6 @@ class THREE_POSITION_TOF
 	//call
 	void operator()(void);  /*  */
 	private:
-	THREE_POSITION_SWITCH_v1 M
-	    = THREE_POSITION_SWITCH_v1::Off;			/* internal variable */
 	int32_t StartTime = 0;	/* internal variable */
 };
 
