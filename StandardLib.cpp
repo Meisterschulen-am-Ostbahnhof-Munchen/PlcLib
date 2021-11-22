@@ -274,18 +274,11 @@ bool TOF_R_TRIG::operator ()(bool IN)
 		ESP_LOGD(TAG, "TOF_1: raising Edge detected");
 		//Start the Timer
 		StartTime = tx;
-	}
-
-
-	if (IN)
-	{
 		Q = true;
-		ET = 0;
 	}
-	else
-	{
-		ET = tx - StartTime;
-	}
+
+	ET = tx - StartTime;
+
 
 
 	M = IN; //remember old State.

@@ -115,20 +115,9 @@ void THREE_POSITION_TOF::operator ()(void)
 	}
 
 
-	if (
-		M != THREE_POSITION_SWITCH_v1::Off
-		&&
-		OUT != THREE_POSITION_SWITCH_v1::Off
-		&&
-		IN != THREE_POSITION_SWITCH_v1::Off
-	   )
-	{
-		ET = 0;
-	}
-	else
-	{
-		ET = tx - StartTime;
-	}
+
+	ET = tx - StartTime;
+
 
 
 
