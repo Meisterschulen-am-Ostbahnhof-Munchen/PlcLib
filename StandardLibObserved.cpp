@@ -24,6 +24,7 @@ static const char *TAG = "StandardLibObserved";
 TOF_R_TRIG_O::TOF_R_TRIG_O(TimerSettings* s) {
     _subject = s;
     _subject->Attach(this);
+	PT = _subject->getPT();
 }
 
 TOF_R_TRIG_O::~TOF_R_TRIG_O() {

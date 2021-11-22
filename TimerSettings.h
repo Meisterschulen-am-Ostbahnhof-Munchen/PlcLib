@@ -15,7 +15,7 @@ public:
 
 
 private:
-    int32_t PT;
+    int32_t _PT;
 };
 
 #endif /* COMPONENTS_PLCLIB_TIMERSETTINGS_H_ */
