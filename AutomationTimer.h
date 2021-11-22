@@ -17,7 +17,6 @@ class THREE_POSITION_TOF
 	public:
 	//VAR_INPUT
 	int32_t PT = 0;
-	bool RST = false;
 	THREE_POSITION_SWITCH_v1 IN
 	    = THREE_POSITION_SWITCH_v1::Off;		/* input 1 */
 	//VAR_OUTPUT
