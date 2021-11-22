@@ -28,86 +28,49 @@ void THREE_POSITION_TOF::operator ()(void)
 	/* read system timer */
 	tx = T_PLC_MS();
 
-
-
-	if (
-		OUT != THREE_POSITION_SWITCH_v1::Off
-		&&
-			(
-				IN == THREE_POSITION_SWITCH_v1::Momentary_backward_down_left
-				||
-				IN == THREE_POSITION_SWITCH_v1::Momentary_forward_up_right
-			)
-	   )
-	{
-		ESP_LOGD(TAG, "TOF_1: cancel detected");
-		OUT = THREE_POSITION_SWITCH_v1::Off;
-		IN  = THREE_POSITION_SWITCH_v1::Off;
-	}
-
-
-	if (
-			(
-				OUT == THREE_POSITION_SWITCH_v1::Momentary_backward_down_left
-				&&
-				IN  == THREE_POSITION_SWITCH_v1::held_backward_down_left
-		    )
-			||
-			(
-				OUT == THREE_POSITION_SWITCH_v1::Momentary_forward_up_right
-				&&
-				IN  == THREE_POSITION_SWITCH_v1::held_forward_up_right
-		   )
-	   )
-	{
-		ESP_LOGD(TAG, "TOF_1: raising Edge II detected");
-		OUT = IN;
-	}
-
-
-	if (
-		OUT == THREE_POSITION_SWITCH_v1::Off
-		&&
-			(
-				IN == THREE_POSITION_SWITCH_v1::Momentary_backward_down_left
-				||
-				IN == THREE_POSITION_SWITCH_v1::Momentary_forward_up_right
-			)
-	   )
-	{
-		ESP_LOGD(TAG, "TOF_1: raising Edge detected");
-		//Start the Timer
-		StartTime = tx;
-		OUT = IN;
-	}
-
-
-
-
-
-
-
-
-
-
-
 	ET = tx - StartTime;
-
-
 	ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
 
-	if (IN == THREE_POSITION_SWITCH_v1::Off) //This FB is INPUT First Priority.
-	{
+	switch (IN){
+	case THREE_POSITION_SWITCH_v1::Off:
 		if (ET >= PT)
 		{
 			OUT = THREE_POSITION_SWITCH_v1::Off;
 		}
+		break;
+	case THREE_POSITION_SWITCH_v1::Momentary_forward_up_right:
+	case THREE_POSITION_SWITCH_v1::Momentary_backward_down_left:
+		if (OUT != THREE_POSITION_SWITCH_v1::Off)
+		{
+			ESP_LOGD(TAG, "TOF_1: cancel detected");
+			OUT = THREE_POSITION_SWITCH_v1::Off;
+			IN  = THREE_POSITION_SWITCH_v1::Off;
+		}
+		else
+		{
+			ESP_LOGD(TAG, "TOF_1: raising Edge detected");
+			//Start the Timer
+			StartTime = tx;
+			OUT = IN;
+		}
+		break;
+	case THREE_POSITION_SWITCH_v1::held_forward_up_right:
+		if (OUT == THREE_POSITION_SWITCH_v1::Momentary_forward_up_right)
+		{
+			ESP_LOGD(TAG, "TOF_1: raising Edge II detected");
+			OUT = IN;
+		}
+		break;
+	case THREE_POSITION_SWITCH_v1::held_backward_down_left:
+		if (OUT == THREE_POSITION_SWITCH_v1::Momentary_backward_down_left)
+		{
+			ESP_LOGD(TAG, "TOF_1: raising Edge II detected");
+			OUT = IN;
+		}
+		break;
+	default:
+		OUT = THREE_POSITION_SWITCH_v1::Off;
+		IN  = THREE_POSITION_SWITCH_v1::Off;
+		break;
 	}
-
-
-
-
-
-
-
 }
