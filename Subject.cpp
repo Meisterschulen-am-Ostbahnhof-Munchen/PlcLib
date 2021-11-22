@@ -3,6 +3,7 @@
 
 void Subject::Attach (Observer* o) {
     _observers->Append(o);
+    o->Update(this); // at Attatching do a Update Directly !
 }
 
 void Subject::Detach (Observer* o) {
