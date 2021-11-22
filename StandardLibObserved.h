@@ -37,7 +37,7 @@ public:
 	TOF_R_TRIG_O(TimerSettings*, const char* key);
     virtual ~TOF_R_TRIG_O();
 
-    virtual void Update(Subject*);
+    virtual void update(Subject*);
         // overrides Observer operation
 	//VAR_INPUT
 	bool RST = false;

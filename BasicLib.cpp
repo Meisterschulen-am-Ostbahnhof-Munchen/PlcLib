@@ -221,7 +221,7 @@ float FT_PT1::operator ()(float in) {
 	};
 
 	last = tx;
-	return out;
+	return (out);
 
 
 	/*

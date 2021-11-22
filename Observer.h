@@ -8,7 +8,7 @@ class Observer {
 public:
 	// Empty virtual destructor for proper cleanup
 	virtual ~Observer() {}
-    virtual void Update(Subject* theChangedSubject) = 0;
+    virtual void update(Subject* theChangedSubject) = 0;
 };
 
 #endif /* OBSERVER_H */

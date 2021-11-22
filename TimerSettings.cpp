@@ -12,5 +12,5 @@ int32_t TimerSettings::getPT(const char* key) const {
 
 void TimerSettings::setPT(const char* key, int32_t PT) {
 	this->_PT = PT;
-    Notify();
+    notify();
 }
