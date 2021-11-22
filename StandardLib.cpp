@@ -292,18 +292,20 @@ bool TOF_R_TRIG::operator ()(bool IN)
 
 	ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
 
-
-	if (ET >= PT)
+	if (!IN) //This FB is INPUT First Priority.
 	{
-		Q = false;
-	}
+		if (ET >= PT)
+		{
+			Q = false;
+		}
 
-	if (RST)
-	{
-		Q = false;
-		RST = false;
-	}
 
+		if (RST)
+		{
+			Q = false;
+			RST = false;
+		}
+	}
 
 	return (Q);
 }
