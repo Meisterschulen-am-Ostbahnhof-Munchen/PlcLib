@@ -260,3 +260,50 @@ bool RS::operator ()(bool SET, bool RESET1)
 	Q1 = !RESET1 && (Q1 || SET);
 	return (Q1);
 }
+
+bool TOF_R_TRIG::operator ()(bool IN)
+{
+	int32_t tx;					/* internal variable */
+
+	/* read system timer */
+	tx = T_PLC_MS();
+
+	// raising Edge
+	if (IN && !M)
+	{
+		ESP_LOGD(TAG, "TOF_1: raising Edge detected");
+		//Start the Timer
+		StartTime = tx;
+	}
+
+
+	if (IN)
+	{
+		Q = true;
+		ET = 0;
+	}
+	else
+	{
+		ET = tx - StartTime;
+	}
+
+
+	M = IN; //remember old State.
+
+	ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
+
+
+	if (ET >= PT)
+	{
+		Q = false;
+	}
+
+	if (RST)
+	{
+		Q = false;
+		RST = false;
+	}
+
+
+	return (Q);
+}
