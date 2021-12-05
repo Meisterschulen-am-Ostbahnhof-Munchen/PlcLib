@@ -33,53 +33,53 @@ TOF_R_TRIG_O::~TOF_R_TRIG_O() {
 
 void TOF_R_TRIG_O::update(Subject* theChangedSubject) {
     if (theChangedSubject == _subject) {
-    	PT = _subject->getPT(_key);
+        PT = _subject->getPT(_key);
     }
 }
 
 bool TOF_R_TRIG_O::operator ()(bool IN)
 {
-	int32_t tx;					/* internal variable */
+    int32_t tx;                    /* internal variable */
 
-	/* read system timer */
-	tx = T_PLC_MS();
+    /* read system timer */
+    tx = T_PLC_MS();
 
-	// raising Edge
-	if (IN && !M)
-	{
-		ESP_LOGD(TAG, "TOF_1: raising Edge detected");
-		//Start the Timer
-		StartTime = tx;
-	}
-
-
-	if (IN)
-	{
-		Q = true;
-		ET = 0;
-	}
-	else
-	{
-		ET = tx - StartTime;
-	}
+    // raising Edge
+    if (IN && !M)
+    {
+        ESP_LOGD(TAG, "TOF_1: raising Edge detected");
+        //Start the Timer
+        StartTime = tx;
+    }
 
 
-	M = IN; //remember old State.
-
-	ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
-
-
-	if (ET >= PT)
-	{
-		Q = false;
-	}
-
-	if (RST)
-	{
-		Q = false;
-		RST = false;
-	}
+    if (IN)
+    {
+        Q = true;
+        ET = 0;
+    }
+    else
+    {
+        ET = tx - StartTime;
+    }
 
 
-	return (Q);
+    M = IN; //remember old State.
+
+    ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
+
+
+    if (ET >= PT)
+    {
+        Q = false;
+    }
+
+    if (RST)
+    {
+        Q = false;
+        RST = false;
+    }
+
+
+    return (Q);
 }

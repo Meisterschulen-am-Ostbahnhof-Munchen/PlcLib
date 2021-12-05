@@ -7,8 +7,8 @@ class Observer;
 
 class Subject {
 public:
-	// Empty virtual destructor for proper cleanup
-	virtual ~Subject() {}
+    // Empty virtual destructor for proper cleanup
+    virtual ~Subject() {}
 
     virtual void attach(Observer*);
     virtual void detach(Observer*);

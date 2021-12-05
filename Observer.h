@@ -6,8 +6,8 @@ class Subject;
 //abstract class
 class Observer {
 public:
-	// Empty virtual destructor for proper cleanup
-	virtual ~Observer() {}
+    // Empty virtual destructor for proper cleanup
+    virtual ~Observer() {}
     virtual void update(Subject* theChangedSubject) = 0;
 };
 

@@ -19,6 +19,6 @@ void Subject::notify () {
 }
 
 Subject::Subject() {
-	_observers = new List<Observer*>();
+    _observers = new List<Observer*>();
 }
 

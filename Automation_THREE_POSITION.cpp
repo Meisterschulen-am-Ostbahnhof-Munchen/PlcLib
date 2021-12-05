@@ -37,14 +37,14 @@ void THREE_POSITION_SWITCH::operator ()(void) {
 
 void THREE_POSITION_VALVE::operator ()(void) {
 
-	switch (State){
-	case THREE_POSITION_SWITCH_v1::Off:                             Q1 = false; Q2 = false; break;
-	case THREE_POSITION_SWITCH_v1::Momentary_forward_up_right:      Q1 = true;  Q2 = false; break;
-	case THREE_POSITION_SWITCH_v1::held_forward_up_right:           Q1 = true;  Q2 = false; break;
-	case THREE_POSITION_SWITCH_v1::Momentary_backward_down_left:    Q1 = false; Q2 = true;  break;
-	case THREE_POSITION_SWITCH_v1::held_backward_down_left:         Q1 = false; Q2 = true;  break;
-	default:                                                        Q1 = false; Q2 = false; break;
-	}
+    switch (State){
+    case THREE_POSITION_SWITCH_v1::Off:                             Q1 = false; Q2 = false; break;
+    case THREE_POSITION_SWITCH_v1::Momentary_forward_up_right:      Q1 = true;  Q2 = false; break;
+    case THREE_POSITION_SWITCH_v1::held_forward_up_right:           Q1 = true;  Q2 = false; break;
+    case THREE_POSITION_SWITCH_v1::Momentary_backward_down_left:    Q1 = false; Q2 = true;  break;
+    case THREE_POSITION_SWITCH_v1::held_backward_down_left:         Q1 = false; Q2 = true;  break;
+    default:                                                        Q1 = false; Q2 = false; break;
+    }
 
 
 }

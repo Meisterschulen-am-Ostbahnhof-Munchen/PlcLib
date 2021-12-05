@@ -7,13 +7,14 @@
 #include "unity.h"
 #include "StandardLib.h"
 
-TEST_CASE("Test TON", "[PlcLib]")
+TEST_CASE("Test TOF", "[PlcLib]")
 {
-    TON TON1;
-    TON1.PT = 1000;
-    TON1(true);
-    TON1(false);
+    TOF TOF1;
+    TOF1.PT = 1000;
+    TOF1(true);
+    TOF1(false);
     //TODO implement the Rest of the Test.
+
 
 }
 

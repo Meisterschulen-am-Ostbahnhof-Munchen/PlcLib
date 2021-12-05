@@ -41,16 +41,16 @@ void FOUR_POSITION_SWITCH::operator ()(void) {
 
 void VALVE_WITH_FLOAT::operator ()(void) {
 
-	switch (State){
-	case FOUR_POSITION_SWITCH_v1::Off:                             Q1 = false; Q2 = false; Q3 = false; Q4 = false; break;
-	case FOUR_POSITION_SWITCH_v1::Momentary_forward_up_right:      Q1 = true;  Q2 = false; Q3 = true;  Q4 = true;  break;
-	case FOUR_POSITION_SWITCH_v1::held_forward_up_right:           Q1 = true;  Q2 = false; Q3 = true;  Q4 = true;  break;
-	case FOUR_POSITION_SWITCH_v1::Momentary_backward_down_left:    Q1 = false; Q2 = true;  Q3 = true;  Q4 = true;  break;
-	case FOUR_POSITION_SWITCH_v1::held_backward_down_left:         Q1 = false; Q2 = true;  Q3 = true;  Q4 = true;  break;
-	case FOUR_POSITION_SWITCH_v1::Momentary_float:                 Q1 = false; Q2 = false; Q3 = true;  Q4 = true;  break;
-	case FOUR_POSITION_SWITCH_v1::held_float:                      Q1 = false; Q2 = false; Q3 = true;  Q4 = true;  break;
-	default:                                                       Q1 = false; Q2 = false; Q3 = false; Q4 = false; break;
-	}
+    switch (State){
+    case FOUR_POSITION_SWITCH_v1::Off:                             Q1 = false; Q2 = false; Q3 = false; Q4 = false; break;
+    case FOUR_POSITION_SWITCH_v1::Momentary_forward_up_right:      Q1 = true;  Q2 = false; Q3 = true;  Q4 = true;  break;
+    case FOUR_POSITION_SWITCH_v1::held_forward_up_right:           Q1 = true;  Q2 = false; Q3 = true;  Q4 = true;  break;
+    case FOUR_POSITION_SWITCH_v1::Momentary_backward_down_left:    Q1 = false; Q2 = true;  Q3 = true;  Q4 = true;  break;
+    case FOUR_POSITION_SWITCH_v1::held_backward_down_left:         Q1 = false; Q2 = true;  Q3 = true;  Q4 = true;  break;
+    case FOUR_POSITION_SWITCH_v1::Momentary_float:                 Q1 = false; Q2 = false; Q3 = true;  Q4 = true;  break;
+    case FOUR_POSITION_SWITCH_v1::held_float:                      Q1 = false; Q2 = false; Q3 = true;  Q4 = true;  break;
+    default:                                                       Q1 = false; Q2 = false; Q3 = false; Q4 = false; break;
+    }
 
 
 }
