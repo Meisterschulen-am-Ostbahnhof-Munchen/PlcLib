@@ -18,7 +18,7 @@
 #define LOG_LOCAL_LEVEL ESP_LOG_DEBUG
 #include "esp_log.h"
 
-static const char *TAG = "BasicLib";
+static const char * const TAG = "BasicLib";
 
 bool CLICK_DEC::operator ()(bool IN)
 {
@@ -221,7 +221,7 @@ float FT_PT1::operator ()(float in) {
 	};
 
 	last = tx;
-	return out;
+	return (out);
 
 
 	/*

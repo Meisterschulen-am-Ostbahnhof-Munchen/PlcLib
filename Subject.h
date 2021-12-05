@@ -10,9 +10,9 @@ public:
 	// Empty virtual destructor for proper cleanup
 	virtual ~Subject() {}
 
-    virtual void Attach(Observer*);
-    virtual void Detach(Observer*);
-    virtual void Notify();
+    virtual void attach(Observer*);
+    virtual void detach(Observer*);
+    virtual void notify();
     Subject();
 private:
     List<Observer*> *_observers;
