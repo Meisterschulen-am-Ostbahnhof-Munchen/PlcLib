@@ -1,4 +1,4 @@
-/* test_PlcLib.c: Implementation of a testable component.
+/* test_PlcLib.cpp: Implementation of a testable component.
 
 
 */
@@ -9,6 +9,7 @@
 
 TEST_CASE("Test PlcLib", "[PlcLib]")
 {
+    //TODO implement the Rest of the Test.
 
 
 }

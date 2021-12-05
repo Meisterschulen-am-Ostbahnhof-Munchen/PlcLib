@@ -19,20 +19,20 @@
 
 
 bool BLINK::operator ()(bool ENABLE) {
-	CLOCK(true);					/* call Timer */
-	if (CLOCK.Q==false && ENABLE) 	/* time passed or init */
-	{
-		CLOCK(false);				/* reset Timer */
-		CLOCK(true);				/* restart Timer */
-		if (OUT==false)
-		{
-			CLOCK.PT = TIMEHIGH;
-		}
-		else
-		{
-			CLOCK.PT = TIMELOW;
-		}
-		OUT = ! OUT;				/* invert */
-	}
-	return (OUT);
+    CLOCK(true);                    /* call Timer */
+    if (CLOCK.Q==false and ENABLE)   /* time passed or init */
+    {
+        CLOCK(false);                /* reset Timer */
+        CLOCK(true);                 /* restart Timer */
+        if (OUT==false)
+        {
+            CLOCK.PT = TIMEHIGH;
+        }
+        else
+        {
+            CLOCK.PT = TIMELOW;
+        }
+        OUT = not OUT;                 /* invert */
+    }
+    return (OUT);
 }

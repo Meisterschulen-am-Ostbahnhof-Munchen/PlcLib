@@ -25,8 +25,8 @@ void INTERLOCK::operator ()(void) {
     T1(I1);
     T2(I2);
 
-    Q1 = I1 && !T2.Q;
-    Q2 = I2 && !T1.Q;
+    Q1 = I1 and not T2.Q;
+    Q2 = I2 and not T1.Q;
 
 }
 
