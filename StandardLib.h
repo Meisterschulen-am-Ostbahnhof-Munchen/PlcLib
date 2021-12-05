@@ -202,7 +202,7 @@ private:
 
 TOF_1 will extend a pulse on input in for PT seconds.
 in addition the timer can be cleared asynchronously with rst.
-TOF_1 is the same function as TOF from the standard LIB except the asynchronous reset input.
+TOF_1 is the same function as TOF from the standard LIB except the asynchronous reset input and the Rising Edge Fact.
 
  *
  * \param    IN starts timer with rising edge, resets timer with falling edge
