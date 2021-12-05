@@ -19,7 +19,7 @@
 #define LOG_LOCAL_LEVEL ESP_LOG_INFO
 #include "esp_log.h"
 
-static const char *TAG = "StandardLibObserved";
+static const char * const TAG = "StandardLibObserved";
 
 TOF_R_TRIG_O::TOF_R_TRIG_O(TimerSettings* s, const char* key) {
     _subject = s;

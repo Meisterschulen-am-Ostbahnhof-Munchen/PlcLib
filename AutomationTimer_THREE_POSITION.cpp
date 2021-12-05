@@ -1,5 +1,5 @@
 /*
- * AutomationTimer.cpp
+ * AutomationTimer_THREE_POSITION.cpp
  *
  *  Created on: 22.11.2021
  *      Author: franz
@@ -7,19 +7,18 @@
 
 
 
-#include "AutomationTimer_THREE_POSITION.h"
 
 #include <stdbool.h>
 #include <stdint.h>
 #include "TimeLib.h"
-#include "StandardLib.h"
-#include "Automation.h"
+#include "Automation_THREE_POSITION.h"
+#include "AutomationTimer_THREE_POSITION.h"
 
 
 #define LOG_LOCAL_LEVEL ESP_LOG_VERBOSE
 #include "esp_log.h"
 
-static const char *TAG = "AutomationTimer";
+static const char * const TAG = "AutomationTimer_THREE_POSITION";
 
 void THREE_POSITION_TOF::operator ()(void)
 {

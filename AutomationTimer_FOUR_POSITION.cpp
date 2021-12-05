@@ -1,5 +1,5 @@
 /*
- * AutomationTimer.cpp
+ * AutomationTimer_FOUR_POSITION.cpp
  *
  *  Created on: 22.11.2021
  *      Author: franz
@@ -10,15 +10,14 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include "TimeLib.h"
-#include "StandardLib.h"
-#include "Automation.h"
-#include "AutomationTimer_THREE_POSITION.h"
+#include "Automation_FOUR_POSITION.h"
+#include "AutomationTimer_FOUR_POSITION.h"
 
 
 #define LOG_LOCAL_LEVEL ESP_LOG_VERBOSE
 #include "esp_log.h"
 
-static const char *TAG = "AutomationTimer";
+static const char * const TAG = "AutomationTimer_FOUR_POSITION";
 
 
 

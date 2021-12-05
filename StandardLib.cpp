@@ -16,7 +16,7 @@
 #define LOG_LOCAL_LEVEL ESP_LOG_INFO
 #include "esp_log.h"
 
-static const char *TAG = "StandardLib";
+static const char * const TAG = "StandardLib";
 
 
 
