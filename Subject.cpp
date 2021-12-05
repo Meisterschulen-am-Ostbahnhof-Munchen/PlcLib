@@ -13,7 +13,7 @@ void Subject::detach (Observer* o) {
 void Subject::notify () {
     ListIterator<Observer*> i(_observers);
 
-    for (i.First(); !i.IsDone(); i.Next()) {
+    for (i.First(); not i.IsDone(); i.Next()) {
         i.CurrentItem()->update(this);
     }
 }

@@ -31,17 +31,17 @@ bool CLICK_DEC::operator ()(bool IN)
         Q3 = false;
     }
 
-    if (IN && !EDGE && !TX.Q)
+    if (IN and not EDGE and not TX.Q)
     {
         /* a rising edge on in sets the counter to 0 */
         CNT = 0;
     }
-    else if (TX.Q && !IN && EDGE)
+    else if (TX.Q and not IN and EDGE)
     {
         /* count falling edges when tp.q is true */
         CNT++;
     }
-    else if (!TX.Q)
+    else if (not TX.Q)
     {
         switch (CNT) {
         case 0 : Q0 = true; break;
@@ -101,7 +101,7 @@ bool CLK_PRG::operator ()(void) {
     TX = T_PLC_MS();
 
     /* INITialize on startup */
-    if (!INIT)
+    if (not INIT)
     {
         INIT = true;
         LAST = TX - PT;
@@ -118,7 +118,7 @@ bool CLK_PULSE::operator ()(void) {
     Q = false;                /* reset Q we generate pulses only for one cycle */
     RUN = CNT < N;
 
-    if( !INIT || RST)
+    if( not INIT || RST)
     {
         ESP_LOGD(TAG, "CLK_PULSE: INIT %i, RST %i", INIT, RST);
         INIT = true;
@@ -126,7 +126,7 @@ bool CLK_PULSE::operator ()(void) {
         TN = TX - PT;
         RUN = false;
     }
-    else if ((CNT < N || N == 0) && TX - TN >= PT)         /* generate a pulse */
+    else if ((CNT < N || N == 0) and TX - TN >= PT)         /* generate a pulse */
     {
         CNT++;
         Q = true;
@@ -145,7 +145,7 @@ int32_t CYCLE_4::operator ()(void)
     /* read system timer */
     TX = T_PLC_MS();
     /* INIT on first cycle */
-    if (!INIT)
+    if (not INIT)
     {
         INIT = true;
         LAST = TX;
@@ -212,7 +212,7 @@ float FT_PT1::operator ()(float in) {
     tx = T_PLC_US();
 
     /* startup initialisation */
-    if (!init || T == 0) {
+    if (not init || T == 0) {
         init = true;
         out = K * in;
     } else {

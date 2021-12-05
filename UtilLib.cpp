@@ -20,7 +20,7 @@
 
 bool BLINK::operator ()(bool ENABLE) {
     CLOCK(true);                    /* call Timer */
-    if (CLOCK.Q==false && ENABLE)   /* time passed or init */
+    if (CLOCK.Q==false and ENABLE)   /* time passed or init */
     {
         CLOCK(false);                /* reset Timer */
         CLOCK(true);                 /* restart Timer */
@@ -32,7 +32,7 @@ bool BLINK::operator ()(bool ENABLE) {
         {
             CLOCK.PT = TIMELOW;
         }
-        OUT = ! OUT;                 /* invert */
+        OUT = not OUT;                 /* invert */
     }
     return (OUT);
 }

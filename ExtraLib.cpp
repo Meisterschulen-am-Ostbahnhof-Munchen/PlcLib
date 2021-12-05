@@ -34,7 +34,7 @@ bool CYCLE_4_TAP::operator ()(bool IN) {
     /* read system timer */
     TX = T_PLC_MS();
     /* INIT on first cycle */
-    if (!INIT)
+    if (not INIT)
     {
         INIT = true;
         LAST = TX;

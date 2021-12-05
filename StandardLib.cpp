@@ -30,7 +30,7 @@ bool TON::operator ()(bool IN)
     tx = T_PLC_MS();
 
     // raising Edge
-    if (IN && !M)
+    if (IN and not M)
     {
         ESP_LOGD(TAG, "TON: raising Edge detected");
         //Start the Timer
@@ -38,7 +38,7 @@ bool TON::operator ()(bool IN)
     }
 
     // falling Edge
-    if (!IN && M)
+    if (not IN and M)
     {
         ESP_LOGD(TAG, "TON: falling Edge detected");
         //reset the Timer
@@ -66,7 +66,7 @@ bool F_TRIG::operator ()(bool CLK)
 {
 
     // falling Edge
-    if (!CLK && M)
+    if (not CLK and M)
     {
         ESP_LOGD(TAG, "F_TRIG: falling Edge detected");
         Q = 1;
@@ -83,7 +83,7 @@ bool R_TRIG::operator ()(bool CLK)
 {
 
     // rising Edge
-    if (CLK && !M)
+    if (CLK and not M)
     {
         ESP_LOGD(TAG, "R_TRIG: rising Edge detected");
         Q = 1;
@@ -104,7 +104,7 @@ bool TOF::operator ()(bool IN)
     tx = T_PLC_MS();
 
     // raising Edge
-    if (IN && !M)
+    if (IN and not M)
     {
         ESP_LOGD(TAG, "TOF: raising Edge detected");
         //reset the Timer
@@ -112,7 +112,7 @@ bool TOF::operator ()(bool IN)
     }
 
     // falling Edge
-    if (!IN && M)
+    if (not IN and M)
     {
         ESP_LOGD(TAG, "TOF: falling Edge detected");
         //Start the Timer
@@ -153,7 +153,7 @@ bool TOF_1::operator ()(bool IN)
     tx = T_PLC_MS();
 
     // raising Edge
-    if (IN && !M)
+    if (IN and not M)
     {
         ESP_LOGD(TAG, "TOF_1: raising Edge detected");
         //reset the Timer
@@ -161,7 +161,7 @@ bool TOF_1::operator ()(bool IN)
     }
 
     // falling Edge
-    if (!IN && M)
+    if (not IN and M)
     {
         ESP_LOGD(TAG, "TOF_1: falling Edge detected");
         //Start the Timer
@@ -208,7 +208,7 @@ bool TP::operator ()(bool IN)
     tx = T_PLC_MS();
 
     // raising Edge
-    if (IN && !M && !Q)
+    if (IN and not M and not Q)
     {
         ESP_LOGD(TAG, "TP: raising Edge detected");
         //Start the Timer
@@ -242,7 +242,7 @@ bool TP::operator ()(bool IN)
 bool CTU::operator ()(bool CU) {
     if (RESET)
         CV = 0;
-    else if (CU && !M)
+    else if (CU and not M)
         CV++;
     M = CU; //remember old State.
     Q = (CV >= PV);
@@ -251,13 +251,13 @@ bool CTU::operator ()(bool CU) {
 
 bool SR::operator ()(bool SET1, bool RESET)
 {
-    Q1 = (!RESET && Q1) || SET1;
+    Q1 = (not RESET and Q1) || SET1;
     return (Q1);
 }
 
 bool RS::operator ()(bool SET, bool RESET1)
 {
-    Q1 = !RESET1 && (Q1 || SET);
+    Q1 = not RESET1 and (Q1 || SET);
     return (Q1);
 }
 
@@ -269,7 +269,7 @@ bool TOF_R_TRIG::operator ()(bool IN)
     tx = T_PLC_MS();
 
     // raising Edge
-    if (IN && !M)
+    if (IN and not M)
     {
         ESP_LOGD(TAG, "TOF_1: raising Edge detected");
         //Start the Timer
@@ -285,7 +285,7 @@ bool TOF_R_TRIG::operator ()(bool IN)
 
     ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
 
-    if (!IN) //This FB is INPUT First Priority.
+    if (not IN) //This FB is INPUT First Priority.
     {
         if (ET >= PT)
         {

@@ -45,7 +45,7 @@ bool TOF_R_TRIG_O::operator ()(bool IN)
     tx = T_PLC_MS();
 
     // raising Edge
-    if (IN && !M)
+    if (IN and not M)
     {
         ESP_LOGD(TAG, "TOF_1: raising Edge detected");
         //Start the Timer
