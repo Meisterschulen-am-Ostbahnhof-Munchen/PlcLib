@@ -42,7 +42,7 @@ void FOUR_POSITION_TOF::operator ()(void)
     case FOUR_POSITION_SWITCH_v1::Momentary_forward_up_right:
     case FOUR_POSITION_SWITCH_v1::Momentary_backward_down_left:
     case FOUR_POSITION_SWITCH_v1::Momentary_float:
-        if (OUT != FOUR_POSITION_SWITCH_v1::Off)
+        if (OUT not_eq FOUR_POSITION_SWITCH_v1::Off)
         {
             ESP_LOGD(TAG, "TOF_1: cancel detected");
             OUT = FOUR_POSITION_SWITCH_v1::Off;
@@ -124,7 +124,7 @@ void FOUR_POSITION_3TOF::operator ()(void)
     case FOUR_POSITION_SWITCH_v1::Momentary_forward_up_right:
     case FOUR_POSITION_SWITCH_v1::Momentary_backward_down_left:
     case FOUR_POSITION_SWITCH_v1::Momentary_float:
-        if (OUT != FOUR_POSITION_SWITCH_v1::Off)
+        if (OUT not_eq FOUR_POSITION_SWITCH_v1::Off)
         {
             ESP_LOGD(TAG, "TOF_1: cancel detected");
             OUT = FOUR_POSITION_SWITCH_v1::Off;

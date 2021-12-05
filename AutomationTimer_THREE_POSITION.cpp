@@ -40,7 +40,7 @@ void THREE_POSITION_TOF::operator ()(void)
         break;
     case THREE_POSITION_SWITCH_v1::Momentary_forward_up_right:
     case THREE_POSITION_SWITCH_v1::Momentary_backward_down_left:
-        if (OUT != THREE_POSITION_SWITCH_v1::Off)
+        if (OUT not_eq THREE_POSITION_SWITCH_v1::Off)
         {
             ESP_LOGD(TAG, "TOF_1: cancel detected");
             OUT = THREE_POSITION_SWITCH_v1::Off;
@@ -110,7 +110,7 @@ void THREE_POSITION_2TOF::operator ()(void)
         break;
     case THREE_POSITION_SWITCH_v1::Momentary_forward_up_right:
     case THREE_POSITION_SWITCH_v1::Momentary_backward_down_left:
-        if (OUT != THREE_POSITION_SWITCH_v1::Off)
+        if (OUT not_eq THREE_POSITION_SWITCH_v1::Off)
         {
             ESP_LOGD(TAG, "TOF_1: cancel detected");
             OUT = THREE_POSITION_SWITCH_v1::Off;
