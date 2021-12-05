@@ -1,12 +1,12 @@
 /*
- * AutomationTimer.h
+ * AutomationTimer_FOUR_POSITION.h
  *
  *  Created on: 22.11.2021
  *      Author: franz
  */
 
-#ifndef COMPONENTS_PLCLIB_AUTOMATIONTIMER_H_
-#define COMPONENTS_PLCLIB_AUTOMATIONTIMER_H_
+#ifndef COMPONENTS_PLCLIB_AUTOMATIONTIMER_FOUR_POSITION_H_
+#define COMPONENTS_PLCLIB_AUTOMATIONTIMER_FOUR_POSITION_H_
 
 
 
@@ -79,4 +79,4 @@ class FOUR_POSITION_3TOF
     int32_t StartTime = 0;    /* internal variable */
 };
 
-#endif /* COMPONENTS_PLCLIB_AUTOMATIONTIMER_H_ */
+#endif /* COMPONENTS_PLCLIB_AUTOMATIONTIMER_FOUR_POSITION_H_ */
