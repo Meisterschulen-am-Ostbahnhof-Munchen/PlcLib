@@ -1,4 +1,4 @@
-/* test_PlcLib.c: Implementation of a testable component.
+/* test_PlcLib.cpp: Implementation of a testable component.
 
 
 */

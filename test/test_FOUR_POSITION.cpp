@@ -1,4 +1,4 @@
-/* test_PlcLib.c: Implementation of a testable component.
+/* test_FOUR_POSITION.cpp: Implementation of a testable component.
 
 
 */
