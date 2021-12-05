@@ -1,4 +1,4 @@
-/* test_PlcLib.c: Implementation of a testable component.
+/* test_THREE_POSITION.cpp: Implementation of a testable component.
 
 
 */
@@ -10,10 +10,11 @@
 
 TEST_CASE("Test THREE_POSITION_TOF", "[PlcLib]")
 {
-	THREE_POSITION_SWITCH SWITCH;
-	THREE_POSITION_TOF    TIMER;
-	THREE_POSITION_VALVE  VALVE;
-	TIMER.PT = 3000;
+    THREE_POSITION_SWITCH SWITCH;
+    THREE_POSITION_TOF    TIMER;
+    THREE_POSITION_VALVE  VALVE;
+    TIMER.PT = 3000;
+    //TODO implement the Rest of the Test.
 
 
 }
