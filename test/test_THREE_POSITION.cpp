@@ -8,7 +8,7 @@
 #include "Automation_THREE_POSITION.h"
 #include "AutomationTimer_THREE_POSITION.h"
 
-TEST_CASE("Test PlcLib", "[PlcLib]")
+TEST_CASE("Test THREE_POSITION_TOF", "[PlcLib]")
 {
 	THREE_POSITION_SWITCH SWITCH;
 	THREE_POSITION_TOF    TIMER;
