@@ -95,14 +95,13 @@ void FOUR_POSITION_TOF::operator ()(void)
 		break;
 	case FOUR_POSITION_SWITCH_v1::Momentary_forward_up_right:
 	case FOUR_POSITION_SWITCH_v1::Momentary_backward_down_left:
+	case FOUR_POSITION_SWITCH_v1::Momentary_float:
 		if (OUT != FOUR_POSITION_SWITCH_v1::Off)
 		{
 			ESP_LOGD(TAG, "TOF_1: cancel detected");
 			OUT = FOUR_POSITION_SWITCH_v1::Off;
 			IN  = FOUR_POSITION_SWITCH_v1::Off;
-		}
-		else
-		{
+		} else {
 			ESP_LOGD(TAG, "TOF_1: raising Edge detected");
 			//Start the Timer
 			StartTime = tx;
@@ -118,6 +117,13 @@ void FOUR_POSITION_TOF::operator ()(void)
 		break;
 	case FOUR_POSITION_SWITCH_v1::held_backward_down_left:
 		if (OUT == FOUR_POSITION_SWITCH_v1::Momentary_backward_down_left)
+		{
+			ESP_LOGD(TAG, "TOF_1: raising Edge II detected");
+			OUT = IN;
+		}
+		break;
+	case FOUR_POSITION_SWITCH_v1::held_float:
+		if (OUT == FOUR_POSITION_SWITCH_v1::Momentary_float)
 		{
 			ESP_LOGD(TAG, "TOF_1: raising Edge II detected");
 			OUT = IN;
