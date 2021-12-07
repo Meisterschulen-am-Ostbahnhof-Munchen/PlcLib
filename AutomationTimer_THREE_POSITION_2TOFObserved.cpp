@@ -1,5 +1,5 @@
 /*
- * AutomationTimer_THREE_POSITION_2TOF.cpp
+ * AutomationTimer_THREE_POSITION_2TOFObserved.cpp
  *
  *  Created on: 22.11.2021
  *      Author: franz
@@ -12,7 +12,7 @@
 #include <stdint.h>
 #include "TimeLib.h"
 #include "Automation_THREE_POSITION.h"
-#include "AutomationTimer_THREE_POSITION_2TOF.h"
+#include "AutomationTimer_THREE_POSITION_2TOFObserved.h"
 
 
 #define LOG_LOCAL_LEVEL ESP_LOG_VERBOSE
@@ -21,7 +21,7 @@
 static const char * const TAG = "AutomationTimer_THREE_POSITION_2TOF";
 
 
-void THREE_POSITION_2TOF::operator ()(void)
+void THREE_POSITION_2TOF_O::operator ()(void)
 {
 
     int32_t tx;                    /* internal variable */

@@ -1,5 +1,5 @@
 /*
- * AutomationTimer_FOUR_POSITION_TOF.cpp
+ * AutomationTimer_FOUR_POSITION_TOFObserved.cpp
  *
  *  Created on: 22.11.2021
  *      Author: franz
@@ -11,7 +11,7 @@
 #include <stdint.h>
 #include "TimeLib.h"
 #include "Automation_FOUR_POSITION.h"
-#include "AutomationTimer_FOUR_POSITION_TOF.h"
+#include "AutomationTimer_FOUR_POSITION_TOFObserved.h"
 
 
 #define LOG_LOCAL_LEVEL ESP_LOG_VERBOSE
@@ -21,7 +21,7 @@ static const char * const TAG = "AutomationTimer_FOUR_POSITION_TOF";
 
 
 
-void FOUR_POSITION_TOF::operator ()(void)
+void FOUR_POSITION_TOF_O::operator ()(void)
 {
 
     int32_t tx;                    /* internal variable */
