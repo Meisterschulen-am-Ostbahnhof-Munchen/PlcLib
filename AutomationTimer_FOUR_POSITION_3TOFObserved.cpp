@@ -11,6 +11,7 @@
 #include <stdint.h>
 #include "TimeLib.h"
 #include "Automation_FOUR_POSITION.h"
+#include "TimerSettings3.h"
 #include "AutomationTimer_FOUR_POSITION_3TOFObserved.h"
 
 

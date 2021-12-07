@@ -12,6 +12,7 @@
 #include <stdint.h>
 #include "TimeLib.h"
 #include "Automation_THREE_POSITION.h"
+#include "TimerSettings.h"
 #include "AutomationTimer_THREE_POSITION_TOFObserved.h"
 
 

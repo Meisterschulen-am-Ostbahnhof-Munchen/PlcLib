@@ -18,10 +18,14 @@
 class FOUR_POSITION_3TOF_O
 {
     public:
+	FOUR_POSITION_3TOF_O(TimerSettings3*, const char * const key);
+	FOUR_POSITION_3TOF_O(const FOUR_POSITION_3TOF_O& a) = delete;
+	FOUR_POSITION_3TOF_O& operator=(const FOUR_POSITION_3TOF_O& other) = delete;
+    virtual ~FOUR_POSITION_3TOF_O();
+
+    virtual void update(Subject*);   // overrides Observer operation
     //VAR_INPUT
-    int32_t PT_up = 0;
-    int32_t PT_down = 0;
-    int32_t PT_float = 0;
+
     FOUR_POSITION_SWITCH_v1 IN        = FOUR_POSITION_SWITCH_v1::Off;        /* input 1 */
     //VAR_OUTPUT
     FOUR_POSITION_SWITCH_v1 OUT        = FOUR_POSITION_SWITCH_v1::Off;        /* output 1 */
@@ -29,7 +33,12 @@ class FOUR_POSITION_3TOF_O
     //call
     void operator()(void);  /*  */
     private:
+    int32_t PT_up = 0;
+    int32_t PT_down = 0;
+    int32_t PT_float = 0;
     int32_t StartTime = 0;    /* internal variable */
+    TimerSettings3* _subject;
+    const char * const _key;
 };
 
 #endif /* COMPONENTS_PLCLIB_AUTOMATIONTIMER_FOUR_POSITION_3TOFOBSERVED_H_ */
