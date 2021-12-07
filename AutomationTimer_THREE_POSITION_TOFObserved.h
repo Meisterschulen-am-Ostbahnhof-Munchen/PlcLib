@@ -9,10 +9,15 @@
 #define COMPONENTS_PLCLIB_AUTOMATIONTIMER_THREE_POSITION_TOFOBSERVED_H_
 
 
+#include "Observer.h"
+
+
+class TimerSettings;
+class Subject;
 
 
 
-class THREE_POSITION_TOF_O
+class THREE_POSITION_TOF_O  : public Observer
 {
     public:
 	THREE_POSITION_TOF_O(TimerSettings*, const char * const key);

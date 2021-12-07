@@ -9,13 +9,15 @@
 #define COMPONENTS_PLCLIB_AUTOMATIONTIMER_FOUR_POSITION_TOFOBSERVED_H_
 
 
+#include "Observer.h"
+
+class TimerSettings;
+class Subject;
 
 
 
 
-
-
-class FOUR_POSITION_TOF_O
+class FOUR_POSITION_TOF_O  : public Observer
 {
     public:
 	FOUR_POSITION_TOF_O(TimerSettings*, const char * const key);

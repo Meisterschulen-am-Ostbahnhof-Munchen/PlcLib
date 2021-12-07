@@ -21,6 +21,27 @@
 
 static const char * const TAG = "AutomationTimer_THREE_POSITION_TOF";
 
+
+THREE_POSITION_TOF_O::THREE_POSITION_TOF_O(TimerSettings* s, const char * const key)
+	: _subject(s),
+	  _key(key)
+
+{
+    _subject->attach(this);
+}
+
+THREE_POSITION_TOF_O::~THREE_POSITION_TOF_O()
+{
+    _subject->detach(this);
+}
+
+void THREE_POSITION_TOF_O::update(Subject* theChangedSubject)
+{
+    if (theChangedSubject == _subject) {
+        PT = _subject->getPT(_key);
+    }
+}
+
 void THREE_POSITION_TOF_O::operator ()(void)
 {
 

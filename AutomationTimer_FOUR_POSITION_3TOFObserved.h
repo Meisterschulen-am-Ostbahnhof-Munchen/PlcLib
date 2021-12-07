@@ -11,11 +11,13 @@
 
 
 
+#include "Observer.h"
+
+class TimerSettings3;
+class Subject;
 
 
-
-
-class FOUR_POSITION_3TOF_O
+class FOUR_POSITION_3TOF_O  : public Observer
 {
     public:
 	FOUR_POSITION_3TOF_O(TimerSettings3*, const char * const key);

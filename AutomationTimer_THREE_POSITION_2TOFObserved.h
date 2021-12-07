@@ -9,9 +9,14 @@
 #define COMPONENTS_PLCLIB_AUTOMATIONTIMER_THREE_POSITION_2TOFOBSERVED_H_
 
 
+#include "Observer.h"
 
 
-class THREE_POSITION_2TOF_O
+class TimerSettings2;
+class Subject;
+
+
+class THREE_POSITION_2TOF_O  : public Observer
 {
     public:
 	THREE_POSITION_2TOF_O(TimerSettings2*, const char * const key);
