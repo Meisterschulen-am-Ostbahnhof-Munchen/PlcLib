@@ -22,7 +22,25 @@
 static const char * const TAG = "StandardLibObserved";
 
 
+TON_O::TON_O(TimerSettings* s, const char * const key)
+	: _subject(s),
+	  _key(key)
 
+{
+    _subject->attach(this);
+}
+
+TON_O::~TON_O()
+{
+    _subject->detach(this);
+}
+
+void TON_O::update(Subject* theChangedSubject)
+{
+    if (theChangedSubject == _subject) {
+        PT = _subject->getPT(_key);
+    }
+}
 
 
 bool TON_O::operator ()(bool IN)
@@ -64,6 +82,29 @@ bool TON_O::operator ()(bool IN)
     Q = ET >= PT ? true : false;
     return (Q);
 }
+
+
+TOF_O::TOF_O(TimerSettings* s, const char * const key)
+	: _subject(s),
+	  _key(key)
+
+{
+    _subject->attach(this);
+}
+
+TOF_O::~TOF_O()
+{
+    _subject->detach(this);
+}
+
+void TOF_O::update(Subject* theChangedSubject)
+{
+    if (theChangedSubject == _subject) {
+        PT = _subject->getPT(_key);
+    }
+}
+
+
 bool TOF_O::operator ()(bool IN)
 {
     int32_t tx;                    /* internal variable */
@@ -111,6 +152,27 @@ bool TOF_O::operator ()(bool IN)
 
 
     return (Q);
+}
+
+
+TOF_1_O::TOF_1_O(TimerSettings* s, const char * const key)
+	: _subject(s),
+	  _key(key)
+
+{
+    _subject->attach(this);
+}
+
+TOF_1_O::~TOF_1_O()
+{
+    _subject->detach(this);
+}
+
+void TOF_1_O::update(Subject* theChangedSubject)
+{
+    if (theChangedSubject == _subject) {
+        PT = _subject->getPT(_key);
+    }
 }
 
 bool TOF_1_O::operator ()(bool IN)
@@ -166,6 +228,27 @@ bool TOF_1_O::operator ()(bool IN)
 
 
     return (Q);
+}
+
+
+TP_O::TP_O(TimerSettings* s, const char * const key)
+	: _subject(s),
+	  _key(key)
+
+{
+    _subject->attach(this);
+}
+
+TP_O::~TP_O()
+{
+    _subject->detach(this);
+}
+
+void TP_O::update(Subject* theChangedSubject)
+{
+    if (theChangedSubject == _subject) {
+        PT = _subject->getPT(_key);
+    }
 }
 
 bool TP_O::operator ()(bool IN)
