@@ -131,7 +131,7 @@ public:
     //call
     bool operator()(bool IN);/* is TRUE, PT milliseconds after IN had a rising edge */
 private:
-    bool M = false;           /* internal variable */
+    bool M = false;            /* internal variable */
     int32_t StartTime = 0;    /* internal variable */
 };
 
@@ -156,7 +156,7 @@ public:
     //call
     bool operator()(bool IN);/* Q is FALSE, PT milliseconds after IN had a falling edge */
 private:
-    bool M = false;           /* internal variable */
+    bool M = false;            /* internal variable */
     int32_t StartTime = 0;    /* internal variable */
 };
 

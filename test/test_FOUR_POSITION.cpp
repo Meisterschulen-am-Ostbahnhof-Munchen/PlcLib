@@ -6,7 +6,7 @@
 
 #include "unity.h"
 #include "Automation_FOUR_POSITION.h"
-#include "AutomationTimer_FOUR_POSITION.h"
+#include "AutomationTimer_FOUR_POSITION_TOF.h"
 
 TEST_CASE("Test FOUR_POSITION_TOF", "[PlcLib]")
 {
