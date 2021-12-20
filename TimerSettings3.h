@@ -18,6 +18,7 @@ public:
 
 
     static TimerSettings3* getInstance( );
+    static TimerSettings3* getInstance(TimerSettings3Interface *forward);
 	static TimerSettings3Interface* getForward();
 	static void setForward(TimerSettings3Interface *forward);
 

@@ -45,10 +45,22 @@ TimerSettings3* TimerSettings3::getInstance() {
     return (instance);
 }
 
+TimerSettings3* TimerSettings3::getInstance(TimerSettings3Interface *forward) {
+    if (instance == nullptr)
+    {
+    	TimerSettings3::setForward(forward);
+        instance = new TimerSettings3();
+    }
+
+    return (instance);
+}
+
 void TimerSettings3::setForward(TimerSettings3Interface *forward) {
 	TimerSettings3::_forward = forward;
 }
 
 
 TimerSettings3Interface* TimerSettings3::_forward = nullptr;
-TimerSettings3* TimerSettings3::instance = nullptr;
+TimerSettings3 *TimerSettings3::instance = nullptr;
+
+
