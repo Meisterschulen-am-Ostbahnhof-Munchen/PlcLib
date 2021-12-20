@@ -1,5 +1,5 @@
-#ifndef COMPONENTS_PLCLIB_TIMERSETTINGS_H_
-#define COMPONENTS_PLCLIB_TIMERSETTINGS_H_
+#ifndef COMPONENTS_PLCLIB_TIMERSETTINGS3_H_
+#define COMPONENTS_PLCLIB_TIMERSETTINGS3_H_
 
 #include "Subject.h"
 #include "TimerSettings3Interface.h"
@@ -31,4 +31,4 @@ private:
     static TimerSettings3* instance;
 };
 
-#endif /* COMPONENTS_PLCLIB_TIMERSETTINGS_H_ */
+#endif /* COMPONENTS_PLCLIB_TIMERSETTINGS3_H_ */
