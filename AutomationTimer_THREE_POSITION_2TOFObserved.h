@@ -19,7 +19,7 @@ class Subject;
 class THREE_POSITION_2TOF_O  : public Observer
 {
     public:
-	THREE_POSITION_2TOF_O(TimerSettings2*, const char * const key);
+	THREE_POSITION_2TOF_O(TimerSettings2*, const char * const key_up, const char * const key_down);
 	THREE_POSITION_2TOF_O(const THREE_POSITION_2TOF_O& a) = delete;
     THREE_POSITION_2TOF_O& operator=(const THREE_POSITION_2TOF_O& other) = delete;
     virtual ~THREE_POSITION_2TOF_O();
@@ -38,7 +38,8 @@ class THREE_POSITION_2TOF_O  : public Observer
     int32_t PT_down = 0;
     int32_t StartTime = 0;  /* internal variable */
     TimerSettings2* _subject;
-    const char * const _key;
+    const char * const _key_up;
+    const char * const _key_down;
 };
 
 
