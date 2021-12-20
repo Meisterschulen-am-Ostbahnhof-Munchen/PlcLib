@@ -8,13 +8,16 @@ class TimerSettings : public TimerSettingsInterface, public Subject{
 public:
     // Empty virtual destructor for proper cleanup
     virtual ~TimerSettings() {}
-    static TimerSettings* getInstance( );
 
     int32_t getPT(const char* key) const;
     void setPT(const char* key, int32_t PT);
 
+    static TimerSettings* getInstance( );
 	static TimerSettingsInterface* getForward();
 	static void setForward(TimerSettingsInterface *forward);
+
+	TimerSettings(const TimerSettings& a) = delete;
+	TimerSettings& operator=(const TimerSettings& other) = delete;
 
 private:
 	TimerSettings() = default;
