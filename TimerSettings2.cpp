@@ -35,6 +35,16 @@ TimerSettings2* TimerSettings2::getInstance() {
     return (instance);
 }
 
+TimerSettings2* TimerSettings2::getInstance(TimerSettings2Interface *forward) {
+    if (instance == nullptr)
+    {
+    	TimerSettings2::setForward(forward);
+        instance = new TimerSettings2();
+    }
+
+    return (instance);
+}
+
 void TimerSettings2::setForward(TimerSettings2Interface *forward) {
 	TimerSettings2::_forward = forward;
 }

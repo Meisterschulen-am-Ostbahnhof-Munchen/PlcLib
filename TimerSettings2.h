@@ -16,6 +16,7 @@ public:
 
 
     static TimerSettings2* getInstance( );
+    static TimerSettings2* getInstance(TimerSettings2Interface *forward);
 	static TimerSettings2Interface* getForward();
 	static void setForward(TimerSettings2Interface *forward);
 

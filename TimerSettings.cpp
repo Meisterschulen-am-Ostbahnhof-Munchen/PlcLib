@@ -24,10 +24,21 @@ TimerSettings* TimerSettings::getInstance() {
     return (instance);
 }
 
+TimerSettings* TimerSettings::getInstance(TimerSettingsInterface *forward) {
+    if (instance == nullptr)
+    {
+    	TimerSettings::setForward(forward);
+        instance = new TimerSettings();
+    }
+
+    return (instance);
+}
+
 void TimerSettings::setForward(TimerSettingsInterface *forward) {
 	TimerSettings::_forward = forward;
 }
 
 
 TimerSettingsInterface* TimerSettings::_forward = nullptr;
-TimerSettings* TimerSettings::instance = nullptr;
+TimerSettings *TimerSettings::instance = nullptr;
+

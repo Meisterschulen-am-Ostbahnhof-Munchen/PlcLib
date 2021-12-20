@@ -13,6 +13,7 @@ public:
     void setPT(const char* key, int32_t PT);
 
     static TimerSettings* getInstance( );
+    static TimerSettings* getInstance(TimerSettingsInterface *forward);
 	static TimerSettingsInterface* getForward();
 	static void setForward(TimerSettingsInterface *forward);
 
