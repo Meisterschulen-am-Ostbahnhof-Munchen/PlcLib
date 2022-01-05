@@ -14,6 +14,8 @@ public:
     virtual void detach(Observer*);
     virtual void notify();
     Subject();
+    Subject(const Subject& a) = delete;
+    Subject& operator=(const Subject& other) = delete;
 private:
     List<Observer*> *_observers;
 };
