@@ -263,12 +263,40 @@ float FT_PT1::operator ()(float in) {
     */
 
 
+}
 
+bool TOGGLE::operator ()(bool CLK) {
+    /*
+	version 1.1	30. oct. 2008
+	programmer 	hugo
+	tested by	oscat
 
+	toggle flip flop the output changes state with every rising edge of clk.
 
+    */
 
+	if(RST)
+		Q = false;
+	else if (CLK and not EDGE)
+		Q = not Q;
+	EDGE = CLK;
+	return (Q);
 
+    /* revision history
 
+	hm	13.9.2007		rev 1.0
+		original version
 
+	hm	30. oct. 2008	rev 1.1
+		deleted unnecessary init
 
+    */
+
+}
+
+TOGGLE::TOGGLE()
+:RST(false)
+,Q(false)
+,EDGE(false)
+{
 }
