@@ -251,13 +251,13 @@ bool CTU::operator ()(bool CU) {
 
 bool SR::operator ()(bool SET1, bool RESET)
 {
-    Q1 = (not RESET and Q1) || SET1;
+    Q1 = (not RESET and Q1) or SET1;
     return (Q1);
 }
 
 bool RS::operator ()(bool SET, bool RESET1)
 {
-    Q1 = not RESET1 and (Q1 || SET);
+    Q1 = not RESET1 and (Q1 or SET);
     return (Q1);
 }
 
