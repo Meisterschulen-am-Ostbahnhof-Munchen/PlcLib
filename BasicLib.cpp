@@ -9,6 +9,8 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdlib.h>
+#include <math.h>
 #include "Operators.h"
 #include "TimeLib.h"
 #include "StandardLib.h"
