@@ -127,9 +127,9 @@ public:
     //call
     bool operator()(void);
 private:
-    bool EDGE = 0;
+    bool EDGE = false;
     int32_t STIME = 0;
-    bool CLK = 0;
+    bool CLK = false;
 };
 
 
