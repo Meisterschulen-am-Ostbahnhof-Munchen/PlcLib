@@ -93,7 +93,7 @@ bool CLK_DIV::operator ()(bool CLK) {
 bool CLK_N::operator ()(void) {
     STIME = T_PLC_MS() >> N;
     CLK = STIME & 1;
-    Q = CLK != EDGE;
+    Q = CLK not_eq EDGE;
     EDGE = CLK;
     return (Q);
 }
