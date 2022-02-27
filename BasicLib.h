@@ -223,14 +223,13 @@ class TOGGLE
 {
 public:
 	//VAR_INPUT
-		bool RST;
+		bool RST = false;
 	//VAR_OUTPUT
-		bool Q;
+		bool Q = false;
 	    //call
 		bool operator()(bool CLK);
-		TOGGLE();
 private:
-		bool EDGE;
+		bool EDGE = false;
 };
 
 
