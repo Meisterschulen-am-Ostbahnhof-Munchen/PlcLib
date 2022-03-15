@@ -146,24 +146,28 @@ bool CYCLE_8_TAP::operator ()(bool IN) {
                     LAST = TX;
                     Q3 = true;
             }
+            break;
         case 4 : /* wait for T4 over 4th cycle */
             if( TX - LAST >= T4 )
             {
                     LAST = TX;
                     Q4 = true;
             }
+            break;
         case 5 : /* wait for T5 over 5th cycle */
             if( TX - LAST >= T5 )
             {
                     LAST = TX;
                     Q5 = true;
             }
+            break;
         case 6 : /* wait for T6 over 6th cycle */
             if( TX - LAST >= T6 )
             {
                     LAST = TX;
                     Q6 = true;
             }
+            break;
         case 7 : /* wait for T7 over 7th cycle */
             if( TX - LAST >= T7 )
             {
