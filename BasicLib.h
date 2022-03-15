@@ -219,7 +219,19 @@ private:
 
 
 
-
+class TOGGLE
+{
+public:
+	//VAR_INPUT
+		bool RST;
+	//VAR_OUTPUT
+		bool Q;
+	    //call
+		bool operator()(bool CLK);
+		TOGGLE();
+private:
+		bool EDGE;
+};
 
 
 
