@@ -55,7 +55,7 @@ void FOUR_POSITION_3TOF_O::operator ()(void)
     tx = T_PLC_MS();
 
     ET = tx - StartTime;
-    ESP_LOGV(TAG, "ET %i    PT_up %i, PT_down %i, PT_float %i", ET, PT_up, PT_down, PT_float);
+    ESP_LOGV(TAG, "ET %" PRIi32 "    PT_up %" PRIi32 ", PT_down %" PRIi32 ", PT_float %" PRIi32 "", ET, PT_up, PT_down, PT_float);
 
     switch (IN){
     case FOUR_POSITION_SWITCH_v1::Off:

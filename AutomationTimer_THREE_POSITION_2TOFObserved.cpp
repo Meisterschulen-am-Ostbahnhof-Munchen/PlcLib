@@ -53,7 +53,7 @@ void THREE_POSITION_2TOF_O::operator ()(void)
     tx = T_PLC_MS();
 
     ET = tx - StartTime;
-    ESP_LOGV(TAG, "ET %i    PT_up %i, PT_down %i", ET, PT_up, PT_down);
+    ESP_LOGV(TAG, "ET %" PRIi32 "    PT_up %" PRIi32 ", PT_down %" PRIi32 "", ET, PT_up, PT_down);
 
     switch (IN){
     case THREE_POSITION_SWITCH_v1::Off:

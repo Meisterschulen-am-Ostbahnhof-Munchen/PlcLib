@@ -127,9 +127,9 @@ public:
     //call
     bool operator()(void);
 private:
-    bool EDGE = 0;
+    bool EDGE = false;
     int32_t STIME = 0;
-    bool CLK = 0;
+    bool CLK = false;
 };
 
 
@@ -223,14 +223,13 @@ class TOGGLE
 {
 public:
 	//VAR_INPUT
-		bool RST;
+		bool RST = false;
 	//VAR_OUTPUT
-		bool Q;
+		bool Q = false;
 	    //call
 		bool operator()(bool CLK);
-		TOGGLE();
 private:
-		bool EDGE;
+		bool EDGE = false;
 };
 
 

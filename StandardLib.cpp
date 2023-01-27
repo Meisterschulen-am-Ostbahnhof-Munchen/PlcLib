@@ -10,7 +10,7 @@
 #include <stdint.h>
 #include "TimeLib.h"
 #include "StandardLib.h"
-
+#include <cinttypes>
 
 
 #define LOG_LOCAL_LEVEL ESP_LOG_INFO
@@ -57,7 +57,7 @@ bool TON::operator ()(bool IN)
 
     M = IN; //remember old State.
 
-    ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
+    ESP_LOGV(TAG, "ET %" PRIi32 "    PT %" PRIi32 " ", ET, PT);
     Q = ET >= PT ? true : false;
     return (Q);
 }
@@ -133,7 +133,7 @@ bool TOF::operator ()(bool IN)
 
     M = IN; //remember old State.
 
-    ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
+    ESP_LOGV(TAG, "ET %" PRIi32 "    PT %" PRIi32 " ", ET, PT);
 
 
     if (ET >= PT)
@@ -182,7 +182,7 @@ bool TOF_1::operator ()(bool IN)
 
     M = IN; //remember old State.
 
-    ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
+    ESP_LOGV(TAG, "ET %" PRIi32 "    PT %" PRIi32 " ", ET, PT);
 
 
     if (ET >= PT)
@@ -283,7 +283,7 @@ bool TOF_R_TRIG::operator ()(bool IN)
 
     M = IN; //remember old State.
 
-    ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
+    ESP_LOGV(TAG, "ET %" PRIi32 "    PT %" PRIi32 " ", ET, PT);
 
     if (not IN) //This FB is INPUT First Priority.
     {
