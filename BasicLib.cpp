@@ -122,7 +122,7 @@ bool CLK_PULSE::operator ()(void) {
 
     if( not INIT or RST)
     {
-        ESP_LOGD(TAG, "CLK_PULSE: INIT %i, RST %i", INIT, RST);
+        ESP_LOGD(TAG, "CLK_PULSE: INIT %" PRIu8 ", RST %" PRIu8 "", INIT, RST);
         INIT = true;
         CNT = 0;
         TN = TX - PT;
@@ -134,7 +134,7 @@ bool CLK_PULSE::operator ()(void) {
         Q = true;
         TN += PT;
     }
-    ESP_LOGD(TAG, "CLK_PULSE: CNT = %i", CNT);
+    ESP_LOGD(TAG, "CLK_PULSE: CNT = %" PRIi32 "", CNT);
     return (Q);
 }
 
@@ -158,7 +158,9 @@ int32_t CYCLE_4::operator ()(void)
         if (SL)
         {
             /* when sx > 0 then the STATE sx is forced to start */
-            STATE= LIMIT(0,SX,3);
+        	const int32_t Min = 0;
+        	const int32_t Max = 3;
+            STATE= LIMIT(Min, SX, Max);
             LAST = TX;
             /* this is to avoid to reset sx from the calling programm it does work fine on codesys but i am not sure about other systems, because we are writing to an input */
             SL = false;
