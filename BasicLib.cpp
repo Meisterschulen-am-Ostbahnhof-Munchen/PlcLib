@@ -53,7 +53,7 @@ bool CLICK_DEC::operator ()(bool IN)
         default:            break;
         }
         CNT = -1;
-    };
+    }
 
     /* remember the status of IN */
     EDGE = IN;
@@ -65,15 +65,15 @@ bool CLICK_DEC::operator ()(bool IN)
 bool CLK_DIV::operator ()(bool CLK) {
     if(RST)
     {
-        CNT = 0;
-        Q0  = 0;
-        Q1  = 0;
-        Q2  = 0;
-        Q3  = 0;
-        Q4  = 0;
-        Q5  = 0;
-        Q6  = 0;
-        Q7  = 0;
+        CNT = false;
+        Q0  = false;
+        Q1  = false;
+        Q2  = false;
+        Q3  = false;
+        Q4  = false;
+        Q5  = false;
+        Q6  = false;
+        Q7  = false;
     }
     else if(CLK)
     {
@@ -93,7 +93,7 @@ bool CLK_DIV::operator ()(bool CLK) {
 bool CLK_N::operator ()(void) {
     STIME = T_PLC_MS() >> N;
     CLK = STIME & 1;
-    Q = CLK ^ EDGE;
+    Q = CLK not_eq EDGE;
     EDGE = CLK;
     return (Q);
 }
@@ -120,7 +120,7 @@ bool CLK_PULSE::operator ()(void) {
     Q = false;                /* reset Q we generate pulses only for one cycle */
     RUN = CNT < N;
 
-    if( not INIT || RST)
+    if( not INIT or RST)
     {
         ESP_LOGD(TAG, "CLK_PULSE: INIT %i, RST %i", INIT, RST);
         INIT = true;
@@ -128,7 +128,7 @@ bool CLK_PULSE::operator ()(void) {
         TN = TX - PT;
         RUN = false;
     }
-    else if ((CNT < N || N == 0) and TX - TN >= PT)         /* generate a pulse */
+    else if ((CNT < N or N == 0) and TX - TN >= PT)         /* generate a pulse */
     {
         CNT++;
         Q = true;
@@ -214,13 +214,13 @@ float FT_PT1::operator ()(float in) {
     tx = T_PLC_US();
 
     /* startup initialisation */
-    if (not init || T == 0) {
+    if (not init or T == 0) {
         init = true;
         out = K * in;
     } else {
         out = out + (in * K - out) * (tx - last) / T * 1.0E-3;
         if (abs(out) < 1.0E-20) out = 0.0;
-    };
+    }
 
     last = tx;
     return (out);
@@ -296,9 +296,4 @@ bool TOGGLE::operator ()(bool CLK) {
 
 }
 
-TOGGLE::TOGGLE()
-:RST(false)
-,Q(false)
-,EDGE(false)
-{
-}
+
