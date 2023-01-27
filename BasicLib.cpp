@@ -9,6 +9,8 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdlib.h>
+#include <math.h>
 #include "Operators.h"
 #include "TimeLib.h"
 #include "StandardLib.h"
@@ -51,7 +53,7 @@ bool CLICK_DEC::operator ()(bool IN)
         default:            break;
         }
         CNT = -1;
-    };
+    }
 
     /* remember the status of IN */
     EDGE = IN;
@@ -63,15 +65,15 @@ bool CLICK_DEC::operator ()(bool IN)
 bool CLK_DIV::operator ()(bool CLK) {
     if(RST)
     {
-        CNT = 0;
-        Q0  = 0;
-        Q1  = 0;
-        Q2  = 0;
-        Q3  = 0;
-        Q4  = 0;
-        Q5  = 0;
-        Q6  = 0;
-        Q7  = 0;
+        CNT = false;
+        Q0  = false;
+        Q1  = false;
+        Q2  = false;
+        Q3  = false;
+        Q4  = false;
+        Q5  = false;
+        Q6  = false;
+        Q7  = false;
     }
     else if(CLK)
     {
@@ -91,7 +93,7 @@ bool CLK_DIV::operator ()(bool CLK) {
 bool CLK_N::operator ()(void) {
     STIME = T_PLC_MS() >> N;
     CLK = STIME & 1;
-    Q = CLK ^ EDGE;
+    Q = CLK not_eq EDGE;
     EDGE = CLK;
     return (Q);
 }
@@ -118,21 +120,21 @@ bool CLK_PULSE::operator ()(void) {
     Q = false;                /* reset Q we generate pulses only for one cycle */
     RUN = CNT < N;
 
-    if( not INIT || RST)
+    if( not INIT or RST)
     {
-        ESP_LOGD(TAG, "CLK_PULSE: INIT %i, RST %i", INIT, RST);
+        ESP_LOGD(TAG, "CLK_PULSE: INIT %" PRIu8 ", RST %" PRIu8 "", INIT, RST);
         INIT = true;
         CNT = 0;
         TN = TX - PT;
         RUN = false;
     }
-    else if ((CNT < N || N == 0) and TX - TN >= PT)         /* generate a pulse */
+    else if ((CNT < N or N == 0) and TX - TN >= PT)         /* generate a pulse */
     {
         CNT++;
         Q = true;
         TN += PT;
     }
-    ESP_LOGD(TAG, "CLK_PULSE: CNT = %i", CNT);
+    ESP_LOGD(TAG, "CLK_PULSE: CNT = %" PRIi32 "", CNT);
     return (Q);
 }
 
@@ -156,7 +158,9 @@ int32_t CYCLE_4::operator ()(void)
         if (SL)
         {
             /* when sx > 0 then the STATE sx is forced to start */
-            STATE= LIMIT(0,SX,3);
+        	const int32_t Min = 0;
+        	const int32_t Max = 3;
+            STATE= LIMIT(Min, SX, Max);
             LAST = TX;
             /* this is to avoid to reset sx from the calling programm it does work fine on codesys but i am not sure about other systems, because we are writing to an input */
             SL = false;
@@ -212,13 +216,13 @@ float FT_PT1::operator ()(float in) {
     tx = T_PLC_US();
 
     /* startup initialisation */
-    if (not init || T == 0) {
+    if (not init or T == 0) {
         init = true;
         out = K * in;
     } else {
         out = out + (in * K - out) * (tx - last) / T * 1.0E-3;
         if (abs(out) < 1.0E-20) out = 0.0;
-    };
+    }
 
     last = tx;
     return (out);
@@ -263,12 +267,35 @@ float FT_PT1::operator ()(float in) {
     */
 
 
+}
 
+bool TOGGLE::operator ()(bool CLK) {
+    /*
+	version 1.1	30. oct. 2008
+	programmer 	hugo
+	tested by	oscat
 
+	toggle flip flop the output changes state with every rising edge of clk.
 
+    */
 
+	if(RST)
+		Q = false;
+	else if (CLK and not EDGE)
+		Q = not Q;
+	EDGE = CLK;
+	return (Q);
 
+    /* revision history
 
+	hm	13.9.2007		rev 1.0
+		original version
 
+	hm	30. oct. 2008	rev 1.1
+		deleted unnecessary init
+
+    */
 
 }
+
+

@@ -10,7 +10,7 @@
 #include <stdint.h>
 #include "TimeLib.h"
 #include "StandardLib.h"
-
+#include <cinttypes>
 
 
 #define LOG_LOCAL_LEVEL ESP_LOG_INFO
@@ -57,7 +57,7 @@ bool TON::operator ()(bool IN)
 
     M = IN; //remember old State.
 
-    ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
+    ESP_LOGV(TAG, "ET %" PRIi32 "    PT %" PRIi32 " ", ET, PT);
     Q = ET >= PT ? true : false;
     return (Q);
 }
@@ -133,7 +133,7 @@ bool TOF::operator ()(bool IN)
 
     M = IN; //remember old State.
 
-    ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
+    ESP_LOGV(TAG, "ET %" PRIi32 "    PT %" PRIi32 " ", ET, PT);
 
 
     if (ET >= PT)
@@ -182,7 +182,7 @@ bool TOF_1::operator ()(bool IN)
 
     M = IN; //remember old State.
 
-    ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
+    ESP_LOGV(TAG, "ET %" PRIi32 "    PT %" PRIi32 " ", ET, PT);
 
 
     if (ET >= PT)
@@ -251,13 +251,13 @@ bool CTU::operator ()(bool CU) {
 
 bool SR::operator ()(bool SET1, bool RESET)
 {
-    Q1 = (not RESET and Q1) || SET1;
+    Q1 = (not RESET and Q1) or SET1;
     return (Q1);
 }
 
 bool RS::operator ()(bool SET, bool RESET1)
 {
-    Q1 = not RESET1 and (Q1 || SET);
+    Q1 = not RESET1 and (Q1 or SET);
     return (Q1);
 }
 
@@ -283,7 +283,7 @@ bool TOF_R_TRIG::operator ()(bool IN)
 
     M = IN; //remember old State.
 
-    ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
+    ESP_LOGV(TAG, "ET %" PRIi32 "    PT %" PRIi32 " ", ET, PT);
 
     if (not IN) //This FB is INPUT First Priority.
     {

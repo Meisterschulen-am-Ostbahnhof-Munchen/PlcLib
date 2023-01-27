@@ -30,7 +30,7 @@ void FOUR_POSITION_TOF::operator ()(void)
     tx = T_PLC_MS();
 
     ET = tx - StartTime;
-    ESP_LOGV(TAG, "ET %i    PT %i", ET, PT);
+    ESP_LOGV(TAG, "ET %" PRIi32 "    PT %" PRIi32 "", ET, PT);
 
     switch (IN){
     case FOUR_POSITION_SWITCH_v1::Off:
